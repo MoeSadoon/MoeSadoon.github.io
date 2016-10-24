@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.cycle/3.03/jquery.cycle.all.min.js"></script>
+  <style type="text/css">
+    body {
+      position: relative;
+      float: left;
+      width: 100%;
+    }
+    .slideshow {
+      height: 510px;
+      margin: 20px 0;
+    }
+    .slide {
+      background-color: #FFF !important;
+      width: 100% !important;
+      height: 510px !important;
+    }
+    .prev {
+      margin-left: -10px;
+      margin-right: 10px;
+    }
+    .next,
+    .prev {
+      cursor: pointer;
+      background-color: #e7e7e7;
+      border: 2px solid #eee;
+      height: 400px;
+      margin-top: 60px;
+    }
+
+    .prev span:before,
+    .next span:before {
+      font-size: 35px;
+      padding: 10px;
+      display: block;
+      font-family: "FontAwesome";
+      margin-top: 165px;
+      display: block;
+    }
+
+    .prev span:before {
+      content:"\f0d9";
+    }
+    .next span:before {
+      content:"\f0da";
+    }
+    .list-group-item.checked a:after {
+      color: #23e343;
+    }
+    .list-group-item a span {
+      word-wrap: break-word;
+      width: 95%;
+      display: block;
+    }
+    .list-group-item a:after {
+      content:"\f00c";
+      font-family: "FontAwesome";
+      color: #eae6e6;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+    .checked a {
+      color: #000;
+    }
+    .current {
+      background-color: #e7e7e7;
+    }
+    .threshold {
+      color: red;
+    }
+    .compare {
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    .compare:before {
+      font-family: "FontAwesome";
+      content:"\f0c5";
+      font-size: 30px;
+    }
+    .compare-modal {
+      position:fixed;
+      margin:0;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      background:rgba(0,0,0,0.7);
+      overflow: scroll;
+      z-index: 1000;
+    }
+    .compare-container {
+      padding-bottom: 300px;
+      z-index: 1000;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .compare-container img{
+      margin-right: 20px;
+      max-width: 30%;
+    }
+  </style>
+  <script type="text/javascript">
+    $(function() {
+      $('.slideshow').cycle({
+        fx:     'scrollHorz',
+        speed:  300,
+        prev:   '.prev',
+        next:   '.next',
+        before: function (curr, next, opts) {
+          $('.current').removeClass('current');
+          var path = $(next).find('.path').attr('name');
+          $.each($('.list-group .list-group-item a'), function() {
+            if ($(this).attr('href').substring(1) == path) {
+              $(this).parent().addClass('checked');
+              $(this).parent().addClass('current');
+            }
+          })
+        },
+        timeout: 0
+      });
+
+      $('.list-group .list-group-item a').unbind().on('click', function(){
+        var href = $(this).attr('href').substring(1);
+
+        $('.slideshow').cycle($('.slide.'+href+':first').index());
+      })
+
+      $('.shot').unbind().on('click', function(e){
+        e.preventDefault();
+        var url = $(this).attr('href');
+        window.open(url,'_blank');
+      })
+
+      $('.compare').unbind().on('click', function(){
+        var slide = $(this).closest(".slide"),
+            newImage = slide.find('a.shot:eq(0)').attr('href'),
+            oldImage = slide.find('a.shot:eq(1)').attr('href'),
+            diffImage = slide.find('a.shot:eq(2)').attr('href');
+        $('.container').append('<div class="compare-modal"><div class="compare-container"><img src="'+newImage+'"/><img src="'+oldImage+'"/><img src="'+diffImage+'"/></div></div>');
+        $('.compare-modal').unbind().on('click', function(){
+          $(this).remove();
+        })
+      })
+    })
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-3">
+        <div class="panel">
+          <div class="page-header">
+            <h4>List of screenshots for shots <small>taken 2016/10/21 16:56:16</small></h4>
+          </div>
+          <div class="panel-heading">Pages:</div>
+          <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item"><a href="#full_article"><span>/full_article</span></a></li>
+            
+            <li class="list-group-item"><a href="#sport"><span>/sport</span></a></li>
+            
+            <li class="list-group-item"><a href="#news"><span>/news</span></a></li>
+            
+            <li class="list-group-item"><a href="#header"><span>/header</span></a></li>
+            
+            <li class="list-group-item"><a href="#tv_and_showbiz"><span>/tv_and_showbiz</span></a></li>
+            
+            <li class="list-group-item"><a href="#football"><span>/football</span></a></li>
+            
+            <li class="list-group-item"><a href="#homepage"><span>/homepage</span></a></li>
+            
+            <li class="list-group-item"><a href="#living"><span>/living</span></a></li>
+            
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-9">
+        <div class="slideshow-container">
+          <div class="prev col-sm-1"><span></span></div>
+          <div class="slideshow pull-left col-sm-10">
+            
+            
+            <div class="row slide full_article">
+              <a class="path" name="full_article"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>320px - /full_article</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="full_article/320x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/320x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport/football/25423/new-test-article-all-functionality">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="full_article/320x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/320x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="full_article/320x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/320x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">33.19 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide full_article">
+              <a class="path" name="full_article"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>600px - /full_article</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="full_article/600x768_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/600x768_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport/football/25423/new-test-article-all-functionality">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="full_article/600x768_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/600x768_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="full_article/600x768_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/600x768_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">33.14 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide full_article">
+              <a class="path" name="full_article"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>768px - /full_article</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="full_article/768x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/768x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport/football/25423/new-test-article-all-functionality">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="full_article/768x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/768x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="full_article/768x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/768x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">16.25 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide full_article">
+              <a class="path" name="full_article"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1024px - /full_article</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="full_article/1024x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/1024x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport/football/25423/new-test-article-all-functionality">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="full_article/1024x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/1024x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="full_article/1024x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/1024x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">11.78 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide full_article">
+              <a class="path" name="full_article"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1280px - /full_article</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="full_article/1280x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/1280x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport/football/25423/new-test-article-all-functionality">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="full_article/1280x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/1280x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="full_article/1280x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/full_article/1280x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">9.42 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide sport">
+              <a class="path" name="sport"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>320px - /sport</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="sport/320x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/320x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="sport/320x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/320x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="sport/320x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/320x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">28.87 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide sport">
+              <a class="path" name="sport"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>600px - /sport</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="sport/600x768_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/600x768_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="sport/600x768_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/600x768_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="sport/600x768_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/600x768_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">15.9 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide sport">
+              <a class="path" name="sport"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>768px - /sport</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="sport/768x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/768x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="sport/768x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/768x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="sport/768x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/768x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">8.42 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide sport">
+              <a class="path" name="sport"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1024px - /sport</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="sport/1024x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/1024x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="sport/1024x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/1024x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="sport/1024x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/1024x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">11.3 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide sport">
+              <a class="path" name="sport"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1280px - /sport</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="sport/1280x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/1280x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="sport/1280x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/1280x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="sport/1280x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/sport/1280x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">9.65 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide news">
+              <a class="path" name="news"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>320px - /news</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="news/320x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/320x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//news">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="news/320x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/320x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="news/320x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/320x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">25.95 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide news">
+              <a class="path" name="news"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>600px - /news</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="news/600x768_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/600x768_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//news">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="news/600x768_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/600x768_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="news/600x768_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/600x768_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">6.87 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide news">
+              <a class="path" name="news"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>768px - /news</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="news/768x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/768x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//news">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="news/768x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/768x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="news/768x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/768x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">4.87 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide news">
+              <a class="path" name="news"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1024px - /news</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="news/1024x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/1024x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//news">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="news/1024x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/1024x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="news/1024x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/1024x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">6.47 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide news">
+              <a class="path" name="news"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1280px - /news</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="news/1280x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/1280x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//news">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="news/1280x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/1280x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="news/1280x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news/1280x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">5.45 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide header">
+              <a class="path" name="header"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>320px - /header</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="header/320x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/320x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="header/320x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/320x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="header/320x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/320x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">4.27 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide header">
+              <a class="path" name="header"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>600px - /header</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="header/600x768_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/600x768_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="header/600x768_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/600x768_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="header/600x768_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/600x768_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">1.86 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide header">
+              <a class="path" name="header"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>768px - /header</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="header/768x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/768x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="header/768x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/768x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="header/768x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/768x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide header">
+              <a class="path" name="header"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1024px - /header</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="header/1024x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/1024x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="header/1024x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/1024x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="header/1024x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/1024x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.4 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide header">
+              <a class="path" name="header"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1280px - /header</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="header/1280x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/1280x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="header/1280x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/1280x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="header/1280x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/header/1280x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.32 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide tv_and_showbiz">
+              <a class="path" name="tv_and_showbiz"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>320px - /tv_and_showbiz</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="tv_and_showbiz/320x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/320x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//tvandshowbiz">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="tv_and_showbiz/320x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/320x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="tv_and_showbiz/320x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/320x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">4.04 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide tv_and_showbiz">
+              <a class="path" name="tv_and_showbiz"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>600px - /tv_and_showbiz</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="tv_and_showbiz/600x768_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/600x768_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//tvandshowbiz">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="tv_and_showbiz/600x768_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/600x768_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="tv_and_showbiz/600x768_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/600x768_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">2.03 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide tv_and_showbiz">
+              <a class="path" name="tv_and_showbiz"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>768px - /tv_and_showbiz</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="tv_and_showbiz/768x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/768x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//tvandshowbiz">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="tv_and_showbiz/768x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/768x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="tv_and_showbiz/768x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/768x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">2.54 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide tv_and_showbiz">
+              <a class="path" name="tv_and_showbiz"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1024px - /tv_and_showbiz</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="tv_and_showbiz/1024x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/1024x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//tvandshowbiz">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="tv_and_showbiz/1024x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/1024x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="tv_and_showbiz/1024x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/1024x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">2.18 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide tv_and_showbiz">
+              <a class="path" name="tv_and_showbiz"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1280px - /tv_and_showbiz</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="tv_and_showbiz/1280x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/1280x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//tvandshowbiz">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="tv_and_showbiz/1280x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/1280x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="tv_and_showbiz/1280x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/tv_and_showbiz/1280x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">1.75 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide football">
+              <a class="path" name="football"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>320px - /football</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="football/320x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/320x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport/football">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="football/320x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/320x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="football/320x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/320x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide football">
+              <a class="path" name="football"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>600px - /football</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="football/600x768_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/600x768_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport/football">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="football/600x768_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/600x768_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="football/600x768_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/600x768_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide football">
+              <a class="path" name="football"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>768px - /football</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="football/768x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/768x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport/football">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="football/768x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/768x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="football/768x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/768x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">1.01 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide football">
+              <a class="path" name="football"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1024px - /football</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="football/1024x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/1024x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport/football">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="football/1024x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/1024x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="football/1024x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/1024x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.47 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide football">
+              <a class="path" name="football"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1280px - /football</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="football/1280x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/1280x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//sport/football">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="football/1280x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/1280x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="football/1280x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/football/1280x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.38 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide homepage">
+              <a class="path" name="homepage"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>320px - /homepage</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="homepage/320x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/320x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="homepage/320x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/320x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="homepage/320x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/320x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide homepage">
+              <a class="path" name="homepage"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>600px - /homepage</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="homepage/600x768_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/600x768_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="homepage/600x768_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/600x768_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="homepage/600x768_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/600x768_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide homepage">
+              <a class="path" name="homepage"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>768px - /homepage</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="homepage/768x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/768x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="homepage/768x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/768x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="homepage/768x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/768x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.91 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide homepage">
+              <a class="path" name="homepage"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1024px - /homepage</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="homepage/1024x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/1024x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="homepage/1024x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/1024x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="homepage/1024x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/1024x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.64 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide homepage">
+              <a class="path" name="homepage"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1280px - /homepage</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="homepage/1280x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/1280x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="homepage/1280x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/1280x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="homepage/1280x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/homepage/1280x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.51 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide living">
+              <a class="path" name="living"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>320px - /living</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="living/320x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/320x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//living">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="living/320x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/320x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="living/320x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/320x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.8 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide living">
+              <a class="path" name="living"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>600px - /living</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="living/600x768_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/600x768_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//living">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="living/600x768_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/600x768_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="living/600x768_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/600x768_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.32 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide living">
+              <a class="path" name="living"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>768px - /living</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="living/768x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/768x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//living">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="living/768x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/768x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="living/768x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/768x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.26 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide living">
+              <a class="path" name="living"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1024px - /living</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="living/1024x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/1024x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//living">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="living/1024x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/1024x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="living/1024x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/1024x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.24 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            <div class="row slide living">
+              <a class="path" name="living"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>1280px - /living</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="living/1280x1500_casperjs_english.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/1280x1500_casperjs_english.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://thesuncouk-develop.go-vip.co//living">english</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="living/1280x1500_casperjs_english_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/1280x1500_casperjs_english_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="living/1280x1500_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/living/1280x1500_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.19 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+          </div>
+          <div class="next col-sm-1"><span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
